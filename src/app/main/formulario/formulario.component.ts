@@ -6,12 +6,32 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css']
 })
-export class FormularioComponent {
+export class FormularioComponent implements OnInit{
   
-  public formLogin!: FormGroup;
+  public validarFormulario!: FormGroup;
   constructor(private formBuilder:FormBuilder){}
 
   ngOnInit(): void{
-    
+    this.validarFormulario = this.formBuilder.group({
+      nombre:['', 
+        [
+          Validators.required,
+          Validators.minLength(10)
+          
+        ]
+      ],
+      email:['', 
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ],
+      text:['',
+        [
+          Validators.required
+        ]
+      ]
+    })
   }
+
 }
