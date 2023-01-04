@@ -6,10 +6,13 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Nombre</span>
                     <input type="text"id="nombre" formControlName="nombre" class="form-control" placeholder="Escriba su nombre" aria-label="nombre" aria-describedby="basic-addon1">
+                    <span class="input-group">(Debe tener como mínimo 10 caracteres)</span>
                 </div>
+                
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Email</span>
                     <input type="email" id="email" formControlName="email" class="form-control" placeholder="Escriba su email" aria-label="email" aria-describedby="basic-addon1">
+            
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
@@ -18,11 +21,9 @@
 
                   <button [disabled]="validarFormulario.invalid" type="button" class="btn btn-outline-secondary">Confirmar</button>
             </form>
-                {{validarFormulario.valid}}
-            <div>
-            <div>
-                {{validarFormulario.value | json}}
-            </div>
+
+            <div *ngIf="validarFormulario.valid">
+                <p>todos los datos son válidos</p>
             </div>
         </div>
     </div>
